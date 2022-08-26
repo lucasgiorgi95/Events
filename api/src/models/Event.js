@@ -30,7 +30,9 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     estado: {
-      type: DataTypes.ENUM(['activo', 'borrado']),
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
       
     },
     fecha: {
