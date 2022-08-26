@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
       
     },
     fecha: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
      
     },
   });

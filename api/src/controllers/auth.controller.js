@@ -1,48 +1,55 @@
 const { User }=require('../db.js');
 
+const allUser = async(req,res)=>{
+    User.findAll().then((r) => {
+        res.send(r)
+      })
+}
+
+
 const signUp = async (req,res)=>{
-    const {username, email, password, rol} = req.body
-   
-
-    const user = new User ({
-        username, 
-        email, 
-        password,
-    })
-    console.log(user)
-    res.json("saliendo")
-
-    // try {
-    //     const { email, name } = req.body
-    //     const user = await User.findOne({ where: { email } }).catch((error) => {
-    //       console.log(error)
-    //     })
-    //     if (user) {
-    //       return res.json({ error: 'Email existente' })
-    //     }
+    try {
+        const { email, name } = req.body
+        const user = await User.findOne({ where: { email } }).catch((error) => {
+          console.log(error)
+        })
+        if (user) {
+          return res.json({ error: 'Email existente' })
+        }
     
-    //     // ACA SE HASEA EL PASSWORD.
-    //     const info = { ...req.body }
-    //     await User.create(info).catch((error) => {
-    //       console.log(error)
-    //     })
-    //     console.log(req.body)
-    //     console.log(user)
-    //     return res.json({ message: 'Usuario Registrado!' })
-    // } catch (error) {
-    //   res.status(400).send({ error: error.message })
-    // }
+        // ACA SE HASEA EL PASSWORD.
+        const info = { ...req.body }
+       const newUser= await User.create(info).catch((error) => {
+          console.log(error)
+        })
+        
+        console.log(newUser)
+        return res.json({ message: 'Usuario Registrado!' })
+    } catch (error) {
+      res.status(400).send({ error: error.message })
+    }
 
 }
 
 
-const signIn = (req,res)=>{
-    res.json("entrando")
+const signIn = async(req,res)=>{
+    const { email, password } = req.body
+    const user = await User.findOne({ where: { email } }).catch((error) => {
+      res.status(404).json({message: "Error"})
+    })
+    // if (user) {
+    //   return res.json({ error: 'Email existente' })
+    // }
+    if(user.dataValues.password === password){
+        return res.json({rol:user.dataValues.rol, email:user.dataValues.email})
+    }
+    res.send(user)
 }
 
 
 
 module.exports = {
     signUp,
-    signIn
+    signIn,
+    allUser
 }

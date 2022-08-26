@@ -11,10 +11,10 @@ const {Event} = require('../db.js')
 
 
  const postEvent = async (req, res)=>{
-    const {titulo, descripcion, descripcionLarga, organizador, lugar, estado, fecha} = req.body
+    const {titulo, otro, descripcionLarga, organizador, lugar, estado, fecha} = req.body
     try {
         const newEvent = await Event.create({
-            titulo, descripcion, descripcionLarga, organizador, lugar, estado, fecha
+            titulo, otro, descripcionLarga, organizador, lugar, estado, fecha
         })
     
        res.status(200).json(newEvent)
