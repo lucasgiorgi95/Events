@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       
     },
-    otro: {
+    descripcionCorta: {
       type: DataTypes.STRING,
       
     },
@@ -29,10 +29,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    estado: {
-      type: DataTypes.BOOLEAN,
+    publicado: {
+      type: DataTypes.ENUM(['publicado', 'borrador']),
       allowNull: false,
-      defaultValue: true
+      defaultValue: "borrador"
       
     },
     fecha: {
