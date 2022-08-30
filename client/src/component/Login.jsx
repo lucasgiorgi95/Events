@@ -1,6 +1,12 @@
 import React from 'react'
 import {useState} from 'react'
 import axios from 'axios'
+
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+
+
 function Login({login}) {
 
 const  [data, setData] = useState({})
@@ -22,11 +28,22 @@ function register(e){
 
   return (
     <div>
-        <form onSubmit={register}>
-            <input onChange={update} type="text" name='email' placeholder='Email'/>
-            <input onChange={update} type="password" name='password' placeholder='Password' />
-            <input type="submit" />
-        </form>
+    <form onSubmit={register}>
+        <Card sx={{ maxWidth: 345 }}>
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    Ingresar
+                    <div>
+                        <input onChange={update} type="text" name='email' placeholder='Email'/>
+                        <input onChange={update} type="password" name='password' placeholder='Password' />
+                        <br />
+                        <input type="submit" />
+                    </div>
+                </Typography>
+            </CardContent>
+
+        </Card>
+    </form>
 
     </div>
   )

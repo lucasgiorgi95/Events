@@ -1,0 +1,72 @@
+{
+    "data":[
+
+{
+    "titulo":"evento",
+    "descripcionCorta":"evento",
+    "descripcionLarga":"evntoooo",
+    "organizador":"Lucas",
+    "lugar":"mi casa",
+    "publicado":"publicado",
+    "fecha":"29/08/22",
+    "estado": "completado",
+    "rol":"admin"
+  },
+
+{
+    "titulo":"evento1",
+    "descripcionCorta":"evento1",
+    "descripcionLarga":"evntoooo1",
+    "organizador":"Martin",
+    "lugar":"otro lugar",
+    "publicado":"publicado",
+    "fecha":"30/08/22",
+    "rol":"admin"
+  },
+
+{
+    "titulo":"evento2",
+    "descripcionCorta":"evento2",
+    "descripcionLarga":"evntoooo2",
+    "organizador":"Agustin",
+    "lugar":"Cordoba",
+    "publicado":"borrador",
+    "fecha":"1/09/22",
+    "rol":"user"
+  },
+
+{
+    "titulo":"evento3",
+    "descripcionCorta":"evento3",
+    "descripcionLarga":"evntoooo3",
+    "organizador":"Angel",
+    "lugar":"Belgrano",
+    "publicado":"borrador",
+    "fecha":"2/09/22",
+    "rol":"user"
+  },
+
+{
+    "titulo":"evento4",
+    "descripcionCorta":"evento4",
+    "descripcionLarga":"evntoooo4",
+    "organizador":"Lucas",
+    "lugar":"mi casa",
+    "publicado":"publicado",
+    "fecha":"3/09/22",
+    "rol":"admin"
+  },
+
+{
+    "titulo":"evento5",
+    "descripcionCorta":"evento5",
+    "descripcionLarga":"evntoooo5",
+    "organizador":"Lucas",
+    "lugar":"mi casa",
+    "publicado":"publicado",
+    "fecha":"4/09/22",
+    "estado": "completado",
+    "rol":"admin"
+  }
+    ]
+}

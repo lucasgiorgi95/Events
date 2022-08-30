@@ -35,6 +35,12 @@ module.exports = (sequelize) => {
       defaultValue: "borrador"
       
     },
+    estado: {
+      type: DataTypes.ENUM(['completado', 'activo']),
+      allowNull: false,
+      defaultValue: "activo"
+      
+    },
     fecha: {
       type: Sequelize.STRING,
      

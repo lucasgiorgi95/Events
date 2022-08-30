@@ -1,39 +1,45 @@
 const {Event} = require('../db.js')
 const {User} = require ('../db.js')
 
-
  const getEvent = async (req, res)=>{
-    const {rol, fecha, estado, titulo}=req.body
+    const {rol, fecha, publicado, titulo}=req.body
 
-   try {
-       
+    try {
        let config ={...req.body}
        delete config.rol
-       let options = {where:{config}, include: User}
+       let options = {where:{...config}, include: User}
+       console.log(options)
     let events = []
     if(rol == 'admin'){
-        events = await Event.findAll(options)
+        events = await Event.findAll(options) 
     }else{
-        config.where.publicado="publicado"
+        options.where.publicado="publicado"
         events = await Event.findAll(options)
     }
-    
-
-    
-
-
     res.status(200).json(events)
    } catch (error) {
+    console.log(error)
     return res.status(500).json({message: error.message})
    }
+
+
 } 
 
+const stateEvent = async (req, res) =>{
+   
+    const events = await Event.findAll({where:{...req.body},include:User})
+    let filterEvents = events.dataValues.filter((e)=>{
+        console.log(e)
+        return 'x' 
+    })
+    res.send(filterEvents)
+}
 
  const postEvent = async (req, res)=>{
-    const {titulo, otro, descripcionLarga, organizador, lugar, estado, fecha, publicado} = req.body
+    const {titulo, descripcionCorta, descripcionLarga, organizador, lugar, estado, fecha, publicado} = req.body
     try {
         const newEvent = await Event.create({
-            titulo, otro, descripcionLarga, organizador, lugar, estado, fecha, publicado
+            titulo, descripcionCorta, descripcionLarga, organizador, lugar, estado, fecha, publicado
         })
     
        res.status(200).json(newEvent)
@@ -90,5 +96,7 @@ module.exports = {
     getEvent,
     postEvent,
     putEvent,
-    suscribeEvent
+    suscribeEvent,
+    stateEvent 
+
 }

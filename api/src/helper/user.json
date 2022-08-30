@@ -1,0 +1,33 @@
+{
+    "data":[
+        {
+            "name":"Lucas",
+        "lastname":"giorgi",
+        "email":"Lucas@lucas.com",
+        "password":"123456",
+        "rol":"admin"
+        },
+        {
+            "name":"Lucas",
+        "lastname":"giorgi",
+        "email":"Lucas@outlook.com",
+        "password":"123456",
+        "rol":"user"
+        },
+        {
+            "name":"Lucas",
+        "lastname":"giorgi",
+        "email":"Lucas@yahoo.com",
+        "password":"123456",
+        "rol":"admin"
+        },
+        {
+            "name":"Lucas",
+        "lastname":"giorgi",
+        "email":"Lucas@gmail.com",
+        "password":"123456",
+        "rol":"user"
+        }
+
+    ]
+}

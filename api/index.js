@@ -18,11 +18,17 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+const { conn, Event, User } = require('./src/db.js');
+const event =require('./src/helper/event.json')
+const user =require('./src/helper/user.json')
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
-  server.listen(4000, () => {
-    console.log(' listening at 4000'); // eslint-disable-line no-console
+conn.sync({ force: true }).then(() => {
+  server.listen(4000, async () => {
+    await Event.bulkCreate(event.data)
+    await User.bulkCreate(user.data)
+    const user1 = User.findByPk(1)
+    const event3 = Event.findByPk(3)
+    console.log(' listening at 4000');
   });
 });
