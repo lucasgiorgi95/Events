@@ -41,9 +41,18 @@ module.exports = (sequelize) => {
       defaultValue: "activo"
       
     },
+    stateBinary: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
     fecha: {
       type: Sequelize.STRING,
      
     },
-  });
+  },
+  {
+    timestamps: false
+  }
+  );
 };

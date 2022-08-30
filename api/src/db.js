@@ -34,8 +34,8 @@ const { Event, User} = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Event.belongsToMany(User, {through: 'EventUser'});
-User.belongsToMany(Event, {through: 'EventUser'});
+Event.belongsToMany(User, {through: 'suscripcion'});
+User.belongsToMany(Event, {through: 'suscripcion'});
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

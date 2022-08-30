@@ -8,7 +8,7 @@
     "organizador":"Lucas",
     "lugar":"mi casa",
     "publicado":"publicado",
-    "fecha":"29/08/22",
+    "fecha":"2022-08-29",
     "estado": "completado",
     "rol":"admin"
   },
@@ -20,7 +20,7 @@
     "organizador":"Martin",
     "lugar":"otro lugar",
     "publicado":"publicado",
-    "fecha":"30/08/22",
+    "fecha":"2022-08-29",
     "rol":"admin"
   },
 
@@ -31,7 +31,7 @@
     "organizador":"Agustin",
     "lugar":"Cordoba",
     "publicado":"borrador",
-    "fecha":"1/09/22",
+    "fecha":"2022-09-01",
     "rol":"user"
   },
 
@@ -42,7 +42,7 @@
     "organizador":"Angel",
     "lugar":"Belgrano",
     "publicado":"borrador",
-    "fecha":"2/09/22",
+    "fecha":"2022-09-02",
     "rol":"user"
   },
 
@@ -53,7 +53,8 @@
     "organizador":"Lucas",
     "lugar":"mi casa",
     "publicado":"publicado",
-    "fecha":"3/09/22",
+    "estado":"completado",
+    "fecha":"2022-09-03",
     "rol":"admin"
   },
 
@@ -64,8 +65,9 @@
     "organizador":"Lucas",
     "lugar":"mi casa",
     "publicado":"publicado",
-    "fecha":"4/09/22",
+    "fecha":"2022-09-04",
     "estado": "completado",
+    "stateBinary":false,
     "rol":"admin"
   }
     ]

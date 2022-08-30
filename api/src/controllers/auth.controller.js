@@ -16,8 +16,6 @@ const signUp = async (req,res)=>{
         if (user) {
           return res.json({ error: 'Email existente' })
         }
-    
-        // ACA SE HASEA EL PASSWORD.
         const info = { ...req.body }
        const newUser= await User.create(info).catch((error) => {
           console.log(error)

@@ -7,7 +7,7 @@ const {User} = require ('../db.js')
     try {
        let config ={...req.body}
        delete config.rol
-       let options = {where:{...config}, include: User}
+       let options = {where:{...config, stateBinary:true}, include: User}
        console.log(options)
     let events = []
     if(rol == 'admin'){
@@ -26,12 +26,11 @@ const {User} = require ('../db.js')
 } 
 
 const stateEvent = async (req, res) =>{
-   
-    const events = await Event.findAll({where:{...req.body},include:User})
-    let filterEvents = events.dataValues.filter((e)=>{
-        console.log(e)
-        return 'x' 
-    })
+   const {estado} = req.body
+   let state = estado? estado : true
+    const events = await Event.findAll({where:{...req.body, stateBinary:true},include:User})
+    let filterEvents = events.filter((e)=>e.dataValues.Users.length !==0 && 
+    (e.dataValues.estado === state || estado))
     res.send(filterEvents)
 }
 
@@ -77,7 +76,7 @@ const suscribeEvent = async (req, res)=>{
       email:email
     }})
     const event = await Event.findByPk(id)
-    const fecha = new Date(event.dataValues.fecha)
+    const fecha = Date.parse(event.dataValues.fecha)
     const fechaActual = new Date()
     if(fecha < fechaActual){
         throw new Error("Expirado")
@@ -87,16 +86,32 @@ const suscribeEvent = async (req, res)=>{
    } catch (error) {
     return res.status(500).json({message: error.message})
    }
-
-
-
 }
+
+const eventDelete = async (req, res, next) => {
+    try {
+      const { id } = req.body
+      await Event.update(
+        { stateBinary: false },
+        {
+          where: {
+            id
+          }
+        }
+      )
+      res.status(200).send('event removed successfully')
+    } catch (error) {
+        return res.status(500).json({message: error.message})
+    }
+  }
+
 
 module.exports = {
     getEvent,
     postEvent,
     putEvent,
     suscribeEvent,
-    stateEvent 
+    stateEvent,
+    eventDelete
 
 }
